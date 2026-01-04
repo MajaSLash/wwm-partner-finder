@@ -1,0 +1,10 @@
+<div class="card" [ngStyle]="style">
+  <img [src]="user.img" />
+  <h2>{{ user.name }}, Lv. {{ user.level }}</h2>
+
+  <div class="meta">
+    @for (item of meta; track item) {
+    <span>{{ item }}</span>
+    }
+  </div>
+</div>
