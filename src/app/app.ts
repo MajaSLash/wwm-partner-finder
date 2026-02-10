@@ -10,6 +10,8 @@ import { RouterOutlet, RouterLink } from '@angular/router';
       <button class="button-89" routerLink="/">Swipe</button>
       <button class="button-89" routerLink="/matches">Matches</button>
       <button class="button-89" routerLink="/profile">Profile</button>
+      <button class="button-89" routerLink="/login">Login</button>
+      <button class="button-89" routerLink="/register">Register</button>
     </nav>
 
     <router-outlet />

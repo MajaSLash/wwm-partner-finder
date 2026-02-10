@@ -82,6 +82,14 @@
   transform: translateY(0);
 }
 
+.login-menu {
+  display: flex;
+  justify-content: right;
+  gap: 16px;
+  padding: 12px;
+  background: #111;
+}
+
 .menu {
   display: flex;
   justify-content: center;

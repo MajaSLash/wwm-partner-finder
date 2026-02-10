@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, HostListener } from '@angular/c
 import { CommonModule } from '@angular/common';
 
 export type User = {
+  id: number;
   name: string;
   age: number;
   img: string;

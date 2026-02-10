@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CardComponent } from '../card/card';
 import { MatchesStore } from '../matches.store';
 import { User } from '../card/card';
+import { AuthService } from '../auth.service';
 
 @Component({
   standalone: true,
@@ -16,9 +17,11 @@ import { User } from '../card/card';
 })
 export class SwipePage {
   private matches = inject(MatchesStore);
+  private auth = inject(AuthService);
 
   users: User[] = [
     {
+      id: 1,
       name: 'Alex',
       age: 25,
       img: 'https://picsum.photos/300/400?1',
@@ -28,6 +31,7 @@ export class SwipePage {
       region: 'NA',
     },
     {
+      id: 2,
       name: 'Jamie',
       age: 28,
       img: 'https://picsum.photos/300/400?2',
@@ -37,6 +41,7 @@ export class SwipePage {
       region: 'EU',
     },
     {
+      id: 3,
       name: 'Taylor',
       age: 22,
       img: 'https://picsum.photos/300/400?3',
@@ -46,65 +51,46 @@ export class SwipePage {
       region: 'ASIA',
     },
     {
-      name: '123',
-      age: 22,
+      id: 4,
+      name: 'Morgan',
+      age: 31,
       img: 'https://picsum.photos/300/400?4',
-      gender: 'non-binary',
-      role: 'tank',
-      level: 30,
-      region: 'ASIA',
+      gender: 'male',
+      role: 'dps',
+      level: 38,
+      region: 'NA',
     },
     {
-      name: 'Taytjhsdrlor',
-      age: 22,
+      id: 5,
+      name: 'Jordan',
+      age: 26,
       img: 'https://picsum.photos/300/400?5',
-      gender: 'non-binary',
-      role: 'tank',
-      level: 30,
-      region: 'ASIA',
-    },
-    {
-      name: 'sdfgs',
-      age: 22,
-      img: 'https://picsum.photos/300/400?6',
-      gender: 'non-binary',
-      role: 'tank',
-      level: 30,
-      region: 'ASIA',
-    },
-    {
-      name: 'sdfgsdfhrjdyhj',
-      age: 22,
-      img: 'https://picsum.photos/300/400?7',
-      gender: 'non-binary',
-      role: 'tank',
-      level: 30,
-      region: 'ASIA',
-    },
-    {
-      name: 'tyjtjytjtyj',
-      age: 223,
-      img: 'https://picsum.photos/300/400?8',
-      gender: 'non-binary',
-      role: 'tank',
-      level: 230,
-      region: 'ASIA',
-    },
-    {
-      name: 'Turturtyaylor',
-      age: 22,
-      img: 'https://picsum.photos/300/400?9',
-      gender: 'non-binary',
-      role: 'tank',
-      level: 30,
-      region: 'ASIA',
+      gender: 'female',
+      role: 'support',
+      level: 44,
+      region: 'EU',
     },
   ];
 
-  onSwipe(user: any, dir: 'left' | 'right') {
+  async onSwipe(user: User, dir: 'left' | 'right') {
     if (dir === 'right') {
+      // Send to backend
+      //try {
+      //  await fetch(`http://localhost:3000/matches/swipe-right/${user.id}`, {
+      //    method: 'POST',
+      //    headers: {
+      //      Authorization: `Bearer ${this.auth.token}`,
+      //      'Content-Type': 'application/json',
+      //    },
+      //  });
       this.matches.add(user);
+      //  this.users = this.users.filter((u) => u.id !== user.id);
+      //} catch (err) {
+      //  console.error('Error saving swipe:', err);
+      //}
     }
+
+    // Remove user from local swipe deck
     this.users = this.users.filter((u) => u !== user);
   }
 }
